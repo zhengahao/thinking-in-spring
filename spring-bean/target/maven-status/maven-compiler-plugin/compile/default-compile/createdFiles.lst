@@ -1,0 +1,12 @@
+org/example/thinking/bean/factory/DefualtUserFactory.class
+org/example/thinking/bean/definition/BeanAliasDemo.class
+org/example/thinking/bean/definition/SpecialBeanInstantiationDemo.class
+org/example/thinking/bean/factory/UserFactoryBean.class
+org/example/thinking/bean/definition/SingletonBeanRegistrationDemo.class
+org/example/thinking/bean/definition/BeanInitializationDemo.class
+org/example/thinking/bean/factory/UserFactory.class
+org/example/thinking/bean/definition/BeanGarbageCollectionDemo.class
+org/example/thinking/bean/definition/AnnotationBeanDefinitionDemo$Config.class
+org/example/thinking/bean/definition/BeanDefinitionCreationDemo.class
+org/example/thinking/bean/definition/BeanInstantiationDemo.class
+org/example/thinking/bean/definition/AnnotationBeanDefinitionDemo.class
