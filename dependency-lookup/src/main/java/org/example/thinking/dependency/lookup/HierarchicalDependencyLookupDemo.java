@@ -53,7 +53,7 @@ public class HierarchicalDependencyLookupDemo {
                 return true;
             }
         }
-        
+        return false;
     }
 
     private static void dispalyContainLocalBean(HierarchicalBeanFactory beanFactory, String beanName) {
