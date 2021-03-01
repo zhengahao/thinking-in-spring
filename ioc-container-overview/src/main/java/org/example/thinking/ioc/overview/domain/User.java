@@ -1,5 +1,12 @@
 package org.example.thinking.ioc.overview.domain;
 
+import org.example.thinking.ioc.overview.enums.City;
+import org.springframework.core.io.Resource;
+
+import java.util.Arrays;
+import java.util.List;
+
+
 /**
  * @Author：zzh
  * @Description: TODO
@@ -11,6 +18,13 @@ public class User {
 
     private String name;
 
+    private City city;
+
+    private City[] workCitys;
+
+    private List<City> lifeCitys;
+
+    private Resource configFileLocation;
 
     public Long getId() {
         return id;
@@ -28,11 +42,47 @@ public class User {
         this.name = name;
     }
 
+    public Resource getConfigFileLocation() {
+        return configFileLocation;
+    }
+
+    public void setConfigFileLocation(Resource configFileLocation) {
+        this.configFileLocation = configFileLocation;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public City[] getWorkCitys() {
+        return workCitys;
+    }
+
+    public void setWorkCitys(City[] workCitys) {
+        this.workCitys = workCitys;
+    }
+
+    public List<City> getLifeCitys() {
+        return lifeCitys;
+    }
+
+    public void setLifeCitys(List<City> lifeCitys) {
+        this.lifeCitys = lifeCitys;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", city=" + city +
+                ", workCitys=" + Arrays.toString(workCitys) +
+                ", lifeCitys=" + lifeCitys +
+                ", configFileLocation=" + configFileLocation +
                 '}';
     }
 

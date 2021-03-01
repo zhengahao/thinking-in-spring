@@ -53,7 +53,6 @@ public class HierarchicalDependencyLookupDemo {
                 return true;
             }
         }
-
         return false;
     }
 
