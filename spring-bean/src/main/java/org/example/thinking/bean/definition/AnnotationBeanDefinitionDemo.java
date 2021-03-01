@@ -91,5 +91,6 @@ public class AnnotationBeanDefinitionDemo {
             user.setName("小马哥");
             return user;
         }
+
     }
 }
