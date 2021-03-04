@@ -1,4 +1,4 @@
-package com.example.spring.bean;
+package com.example.thinking.test.spring.bean;
 
 import org.example.thinking.ioc.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;

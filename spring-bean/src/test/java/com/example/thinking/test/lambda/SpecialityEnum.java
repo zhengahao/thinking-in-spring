@@ -1,4 +1,4 @@
-package com.example.lambda;
+package com.example.thinking.test.lambda;
 
 /**
  * 特长
