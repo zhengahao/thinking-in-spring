@@ -1,4 +1,4 @@
-package com.example.lambda;
+package com.example.thinking.test.lambda;
 
 import java.math.BigDecimal;
 import java.util.function.*;
