@@ -1,8 +1,11 @@
 package org.example.thinking.ioc.overview.domain;
 
 import org.example.thinking.ioc.overview.enums.City;
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.core.io.Resource;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +15,7 @@ import java.util.List;
  * @Description: TODO
  * @Date: 2021/1/6 9:24 上午
  */
-public class User {
+public class User implements BeanNameAware {
 
     private Long id;
 
@@ -25,6 +28,11 @@ public class User {
     private List<City> lifeCitys;
 
     private Resource configFileLocation;
+    /**
+     * 当前bean的名称
+     */
+    // 为了让它序列化或者反序列化，不要存储，可以加上一个transient这种方式来描述
+    private transient String beanName;
 
     public Long getId() {
         return id;
@@ -91,5 +99,20 @@ public class User {
         user.setId(1L);
         user.setName("小马哥");
         return user;
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println("用户 Bean [" + beanName + "] 初始化...");
+    }
+
+    @PreDestroy
+    public void destroy() {
+        System.out.println("用户Bean [" + beanName + "] 销毁中...");
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        this.beanName = name;
     }
 }
