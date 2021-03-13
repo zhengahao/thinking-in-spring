@@ -1,8 +1,0 @@
-/Users/zhengzihao/workspace/thinking-in-spring/ioc-container-overview/src/main/java/org/example/thinking/ioc/overview/dependency/lookup/DependencyLookUpDemo.java
-/Users/zhengzihao/workspace/thinking-in-spring/ioc-container-overview/src/main/java/org/example/thinking/ioc/overview/dependency/injection/DependencyInjectionDemo.java
-/Users/zhengzihao/workspace/thinking-in-spring/ioc-container-overview/src/main/java/org/example/thinking/ioc/overview/repository/UserRepository.java
-/Users/zhengzihao/workspace/thinking-in-spring/ioc-container-overview/src/main/java/org/example/thinking/ioc/overview/annotation/Super.java
-/Users/zhengzihao/workspace/thinking-in-spring/ioc-container-overview/src/main/java/org/example/thinking/ioc/overview/container/BeanFactoryAsIoCContainerDemo.java
-/Users/zhengzihao/workspace/thinking-in-spring/ioc-container-overview/src/main/java/org/example/thinking/ioc/overview/domain/User.java
-/Users/zhengzihao/workspace/thinking-in-spring/ioc-container-overview/src/main/java/org/example/thinking/ioc/overview/container/AnnotationApplicationAsIoCContainerDemo.java
-/Users/zhengzihao/workspace/thinking-in-spring/ioc-container-overview/src/main/java/org/example/thinking/ioc/overview/domain/SuperUser.java
