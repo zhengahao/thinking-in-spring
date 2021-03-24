@@ -13,7 +13,9 @@
     <context:component-scan base-package="org.example.thinking"/>
     -->
 
-
+    <!-- RootDefinition 不需要合并，不存在parent -->
+    <!-- 普通的BeanDefinition GenericBeanDefinition -->
+    <!-- 合并后由GenericBeanDefinition变成RootBeanDefinition-->
     <bean id="user" class="org.example.thinking.ioc.overview.domain.User" >
         <property name="id" value="1"/>
         <property name="name" value="小马哥"/>
@@ -32,7 +34,9 @@
     <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
         <property name="targetBeanName" value="user"/>
     </bean>
-
+    <!-- 普通的BeanDefinition GenericBeanDefinition -->
+    <!-- 合并后由GenericBeanDefinition变成RootBeanDefinition,并且覆盖parent里面的相关属性-->
+    <!-- primary变成true，增加了address属性-->
     <bean id="superUser" class="org.example.thinking.ioc.overview.domain.SuperUser" parent="user" primary="true">
         <property name="address" value="北京朝阳区"/>
     </bean>
