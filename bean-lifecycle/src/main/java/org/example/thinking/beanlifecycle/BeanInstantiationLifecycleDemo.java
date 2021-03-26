@@ -44,5 +44,17 @@ public class BeanInstantiationLifecycleDemo {
             }
             return null;// 保持Spring IoC容器的实例化操作
         }
+
+        @Override
+        public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
+            if (ObjectUtils.nullSafeEquals("user", beanName) && User.class.equals(bean.getClass())) {
+                // User对象不允许属性赋值（属性填入）（配置元信息 -> 属性值）
+                User user = (User) bean;
+                user.setId(2L);
+                user.setName("mercybliz");
+                return false;
+            }
+            return true;
+        }
     }
 }
