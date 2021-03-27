@@ -61,4 +61,15 @@ class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPos
 
         return null;
     }
+
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        if (ObjectUtils.nullSafeEquals("userHolder", beanName) && UserHolder.class.equals(bean.getClass())) {
+            UserHolder userHolder = (UserHolder) bean;
+            // userHolder 的description此时等于The user holder V2
+            userHolder.setDescription("user holder V3");
+        }
+        return bean;
+    }
+
+
 }
