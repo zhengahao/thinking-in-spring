@@ -2,17 +2,16 @@ package org.example.thinking.beanlifecycle;
 
 import org.example.thinking.ioc.overview.domain.User;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanClassLoaderAware;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.*;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
+
+import javax.annotation.PostConstruct;
 
 /**
  * User Holder类
  */
-public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware {
+public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware, InitializingBean {
 
     private final User user;
 
@@ -37,6 +36,33 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
     private ClassLoader classLoader;
 
     private BeanFactory beanFactory;
+
+    /**
+     * 依赖于注解驱动
+     * 当前场景：BeanFactory需要一个相关的BeanPostProcessor
+     * */
+    @PostConstruct
+    public void initPostConstruct() {
+        //postProcessBeforeInitialization V3 -> initPostConstruct V4
+        this.description = "The user Holder V4";
+        System.out.println("initPostConstruct() = " + description);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        //postProcessBeforeInitialization V4 -> initPostConstruct V5
+        this.description = "The user Holder V5";
+        System.out.println("afterPropertiesSet() = " + description);
+    }
+
+    /**
+     * 自定义初始化方法
+     */
+    public void init() {
+        //postProcessBeforeInitialization V5 -> initPostConstruct V6
+        this.description = "The user Holder V6";
+        System.out.println("init() = " + description);
+    }
 
     public UserHolder(User user) {
         this.user = user;
@@ -77,4 +103,6 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
     public void setEnvironment(Environment environment) {
         this.environment = environment;
     }
+
+
 }

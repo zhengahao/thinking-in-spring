@@ -15,10 +15,12 @@ public class BeanInitializationLifecycleDemo {
     }
 
     public static void executeBeanFactory() {
+        // DefaultListableBeanFactory无法进行Bean的注册,因为Bean的注册只能在ApplicationContext里面来进行运用
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         // 方法一：添加BeanPostProcessor实现
         beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
-
+        // 添加CommonAnnotationBeanPostProcessor 解决 @PostConstruct回调的问题
+        beanFactory.addBeanPostProcessor(new CommonAnnotationBeanPostProcessor());
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
         String[] location = {"classpath:META-INF/dependency-look-up.xml", "META-INF/bean-constrauct-dependency-injection.xml"};
         int count = beanDefinitionReader.loadBeanDefinitions(location);
