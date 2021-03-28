@@ -7,11 +7,12 @@ import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 /**
  * User Holder类
  */
-public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware, InitializingBean, SmartInitializingSingleton {
+public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware, InitializingBean, SmartInitializingSingleton, DisposableBean {
 
     private final User user;
 
@@ -112,4 +113,24 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
         System.out.println("afterSingletonsInstantiated() = " + description);
     }
 
+    @PreDestroy
+    public void preDestrory() {
+        // postProcessBeforeDestruction() = The user Holder V9
+        // userHolder 的description此时等于The user holder V9
+        this.description = "The user Holder V10";
+        System.out.println("preDestrory(): " + description);
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        // preDestrory() = The user Holder V10
+        this.description = "The user Holder V11";
+        System.out.println("destroy(): " + description);
+    }
+
+    public void doDestroy() {
+        // destroy() = The user Holder V11
+        this.description = "The user Holder V12";
+        System.out.println("doDestroy(): " + description);
+    }
 }

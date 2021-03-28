@@ -12,10 +12,11 @@ public class BeanLifecycleDemo {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         // 方法一：添加BeanPostProcessor实现
         beanFactory.addBeanPostProcessor(new MyInstantiationAwareBeanPostProcessor());
-        // 添加CommonAnnotationBeanPostProcessor 解决 @PostConstruct回调的问题
-        beanFactory.addBeanPostProcessor(new CommonAnnotationBeanPostProcessor());
         // 添加MyDestructionAwareBeanPostProcessor 执行销毁前回调
         beanFactory.addBeanPostProcessor(new MyDestructionAwareBeanPostProcessor());
+        // 添加CommonAnnotationBeanPostProcessor 解决 @PostConstruct @PreDestory回调的问题
+        beanFactory.addBeanPostProcessor(new CommonAnnotationBeanPostProcessor());
+
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
         String[] location = {"classpath:META-INF/dependency-look-up.xml", "META-INF/bean-constrauct-dependency-injection.xml"};
