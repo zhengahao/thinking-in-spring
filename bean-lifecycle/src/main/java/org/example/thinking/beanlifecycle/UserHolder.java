@@ -11,7 +11,7 @@ import javax.annotation.PostConstruct;
 /**
  * User Holder类
  */
-public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware, InitializingBean {
+public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFactoryAware, EnvironmentAware, InitializingBean, SmartInitializingSingleton {
 
     private final User user;
 
@@ -40,7 +40,7 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
     /**
      * 依赖于注解驱动
      * 当前场景：BeanFactory需要一个相关的BeanPostProcessor
-     * */
+     */
     @PostConstruct
     public void initPostConstruct() {
         //postProcessBeforeInitialization V3 -> initPostConstruct V4
@@ -104,5 +104,12 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
         this.environment = environment;
     }
 
+
+    @Override
+    public void afterSingletonsInstantiated() {
+        //postProcessAfterInitialization V7 -> afterSingletonsInstantiated V8
+        this.description = "The user Holder V8";
+        System.out.println("afterSingletonsInstantiated() = " + description);
+    }
 
 }

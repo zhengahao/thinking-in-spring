@@ -27,10 +27,17 @@ public class BeanInitializationLifecycleDemo {
 
         System.out.println("已加载 BeanDefinition数量：" + count);
 
+        // 显式的执行preInstantiateSingletons
+        // SmartInitializingSingleton 通常在Spring ApplicationContext场景使用
+        // preInstantiateSingletons 将已注册的BeanDefinition初始化成Spring Bean
+        beanFactory.preInstantiateSingletons();
+
         User user = beanFactory.getBean("user", User.class);
         User superUser = beanFactory.getBean("superUser", User.class);
         // 构造器注入是按照类型的方式进行注入的，resolveDependency
         UserHolder userHolder = beanFactory.getBean("userHolder", UserHolder.class);
+
+
 
         System.out.println(user);
         System.out.println(superUser);
