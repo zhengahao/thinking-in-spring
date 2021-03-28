@@ -7,7 +7,7 @@ import org.springframework.context.annotation.CommonAnnotationBeanPostProcessor;
 
 public class BeanLifecycleDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // DefaultListableBeanFactory无法进行Bean的注册,因为Bean的注册只能在ApplicationContext里面来进行运用
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         // 方法一：添加BeanPostProcessor实现
@@ -43,6 +43,16 @@ public class BeanLifecycleDemo {
         // Bean的销毁并不意味这Bean被垃圾回收了
         beanFactory.destroyBean("userHolder", userHolder);
         System.out.println(userHolder);
+        // 释放掉强引用
+        userHolder = null;
+        // 销毁BeanFactory 中的单例Bean
+        beanFactory.destroySingletons();
+        // 强制gc
+        System.gc();
+        // 等待一段时间
+        Thread.sleep(1000);
+        // 强制gc
+        System.gc();
 
     }
 }

@@ -133,4 +133,9 @@ public class UserHolder implements BeanNameAware, BeanClassLoaderAware, BeanFact
         this.description = "The user Holder V12";
         System.out.println("doDestroy(): " + description);
     }
+
+
+    protected void finalize() throws Throwable {
+        System.out.println("The UserHolder is finalized...");
+    }
 }
