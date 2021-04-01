@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <bean class="org.example.thinking.beanlifecycle.MyInstantiationAwareBeanPostProcessor" />
+
+        <bean id="userHolder" class="org.example.thinking.beanlifecycle.UserHolder" autowire="constructor" init-method="init" destroy-method="doDestroy">
+                <!--通过XML元素配置-->
+<!--                <property name="number" value="1"/>-->
+                <property name="description" value="The user holder"/>
+        </bean>
+
+</beans>
