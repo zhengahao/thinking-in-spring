@@ -1,4 +1,4 @@
-package com.example.thinking.test.algorithm;
+package com.example.thinking.test.algorithm.sort;
 
 import com.sun.istack.internal.NotNull;
 

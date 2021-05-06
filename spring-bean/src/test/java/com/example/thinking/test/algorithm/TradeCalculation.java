@@ -15,7 +15,9 @@ public class TradeCalculation {
         caculateGoldenSection(Variety.GOlD_TD, 358, 364);
         caculateGoldenSection(Variety.AG_TD, 5396, 5220);
         caculateGoldenSection(Variety.XAGUUSD, 25, 25.257);
-        caculateGoldenSection(Variety.XAUUSD, 1676, 1755);
+        caculateGoldenSection(Variety.XAUUSD, 1682, 1715);
+        caculateGoldenSection(Variety.XAUUSD, 1763, 1790);
+
         caculateGoldenSection(Variety.USDJPY, 108.76, 109.37);
         caculateGoldenSection(Variety.CIOIL, 57.2, 67.2);
         caculateGoldenSection(Variety.GBPUSD, 1.42, 67.2);
